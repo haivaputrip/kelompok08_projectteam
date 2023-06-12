@@ -1,40 +1,45 @@
 import openpyxl
 
-def copy_row(source_file, source_sheet, destination_file, destination_sheet, row_number):
+def pindahkan_data_acc(nama_file):
     try:
-        # Load the source workbook
-        source_workbook = openpyxl.load_workbook(source_file)
+        # Buka file Excel
+        workbook = openpyxl.load_workbook(nama_file)
         
-        # Load the destination workbook
-        destination_workbook = openpyxl.load_workbook(destination_file)
+        # Mengambil sheet pertama
+        sheet = workbook.active
         
-        # Select the source sheet and destination sheet
-        source_sheet = source_workbook[source_sheet]
-        destination_sheet = destination_workbook[destination_sheet]
+        # Mencari data "acc" dalam kolom tertentu
+        kolom_sumber = 'g'  # Kolom yang ingin dicek
+        baris_mulai = 2  # Nomor baris mulai
         
-        # Copy the row from the source sheet to the destination sheet
-        for column in range(1, 8):
-            cell_value = source_sheet.cell(row=row_number, column=column).value
-            destination_sheet.cell(row=row_number, column=column).value = cell_value
+        data_acc = []
+        for row in sheet.iter_rows(min_row=baris_mulai, values_only=True):
+            nilai = row[0]  # Mengambil nilai kolom tertentu
+            if nilai == "acc" or "Acc" or "ACC":
+                data_acc.append(row)
+            
         
-        # Save the changes to the destination file
-        destination_workbook.save(destination_file)
-        print("Row copied successfully.")
+        # Membuat file spreadsheet baru dan menyimpan data "acc" di dalamnya
+        if data_acc:
+            workbook_acc = openpyxl.Workbook()
+            sheet_acc = workbook_acc.active
+            
+            for data in data_acc:
+                sheet_acc.append(data)
+            
+            nama_file_acc = "baris_FT.xlsx"
+            workbook_acc.save(nama_file_acc)
+            print(f"Data dengan nilai 'acc' telah dipindahkan ke file '{nama_file_acc}'.")
+        else:
+            print("Tidak ada data dengan nilai 'acc' dalam kolom yang diperiksa.")
     
     except FileNotFoundError:
-        print("File not found.")
+        print("File tidak ditemukan.")
     
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        print(f"Terjadi kesalahan: {str(e)}")
 
-# Example usage
-source_file = "hasil_pengajuan_tandatangan.xlsx"
-source_sheet = "Lembar1"
-destination_file = "baris_FT.xlsx"
-destination_sheet = "Lembar1"
-sheet = destination_file.active
-row_count = sheet.max_row
-sheet.append(destination_file)
-row_number = 8
-
-copy_row(source_file, source_sheet, destination_file, destination_sheet, row_number)
+# Contoh penggunaan
+nama_file = "hasil_pengajuan_tandatangan.xlsx"
+pindahkan_data_acc(nama_file)
+import programTU
