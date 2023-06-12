@@ -1,7 +1,7 @@
 import openpyxl
 
 def buka_file_excel():
-    nama_file = "hasil_pengajuan_tandatangan.xlsx"
+    nama_file = "baris_FT.xlsx"
     
     try:
         # Buka file Excel
