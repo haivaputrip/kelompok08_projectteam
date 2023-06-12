@@ -19,6 +19,7 @@ def login():
         quit()
 login()
 
+
 import openpyxl
 
 # Fungsi untuk meminta input dari pengguna
@@ -40,6 +41,7 @@ def simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi, tujuan, file_p
     # Menyimpan file spreadsheet
     wb.save('hasil_pengajuan_tandatangan.xlsx')
     print('Data pengajuan tandatangan telah disimpan dalam file hasil_pengajuan_tandatangan.xlsx')
+    import programTU
 
 # Menampilkan data pengajuan tandatangan
 def tampilkan_data():
@@ -69,8 +71,10 @@ keterangan_pengajuan = get_input("ACC atau Belum: ")
 # Memanggil fungsi untuk menyimpan data pengajuan tandatangan dalam spreadsheet
 simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi, tujuan, file_proposal, keterangan_pengajuan)
 
+
 # Memanggil fungsi untuk menampilkan data pengajuan tandatangan
 tampilkan_data()
+
 
 
 
