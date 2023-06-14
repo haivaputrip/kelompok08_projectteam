@@ -15,7 +15,7 @@ if pilihan == 1:
     print ("3. Melanjutkan pengajuan ke pihak Fakultas")
     print ("4. keluar")
 
-    pilihan = int(input("masukkan pilihan anda (1-3): "))
+    pilihan = int(input("masukkan pilihan anda (1-4): "))
 
     if pilihan == 1:
         import coba3

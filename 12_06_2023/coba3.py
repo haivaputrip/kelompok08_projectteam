@@ -49,9 +49,10 @@ keterangan_pengajuan = get_input("ACC atau Belum: ")
 # Memanggil fungsi untuk menyimpan data pengajuan tandatangan dalam spreadsheet
 simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi, tujuan, file_proposal, keterangan_pengajuan)
 
-
+import programTU
 # Memanggil fungsi untuk menampilkan data pengajuan tandatangan
-tampilkan_data()
+#tampilkan_data()
+
 
 
 

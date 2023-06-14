@@ -21,6 +21,7 @@ def buka_file_excel():
             baris = input("Masukkan nomor baris yang ingin diedit (atau 'selesai' untuk keluar): ")
             
             if baris.lower() == "selesai":
+                import programTU
                 break
             
             kolom = "G"
@@ -41,4 +42,3 @@ def buka_file_excel():
 
 # Memanggil fungsi untuk membuka dan mengedit file Excel
 buka_file_excel()
-import programTU
