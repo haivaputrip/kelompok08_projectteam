@@ -63,9 +63,9 @@ def tombol6():
     button1 = button1= tk.Button(mainform6,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12))
     button1.config(width=10,height=1)
     button1.place(x=870,y=560)
-    button1 = button1= tk.Button(mainform6,text="Kembali",bg="red",fg="white", font=("Times New Roman",12))
-    button1.config(width=10,height=1)
-    button1.place(x=120,y=560)
+    button2 = tk.Button(mainform6,text="Kembali",bg="red",fg="white", font=("Times New Roman",12))
+    button2.config(width=10,height=1)
+    button2.place(x=120,y=560)
 
     mainform6.mainloop()
 
