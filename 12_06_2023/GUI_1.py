@@ -1,7 +1,6 @@
 import tkinter as tk
 from PIL import ImageTk, Image
-import tkinter as tk
-from PIL import ImageTk, Image
+
 def tombol6():
     mainform6 = tk.Tk()
     mainform6.geometry("1080x720")
@@ -39,16 +38,34 @@ def tombol6():
     ent3 =tk.Entry(mainform6,width=35, font=("Times New Roman", 12))
     ent3.place(x=170,y=450)
     label6=tk.Label(mainform6,text= "Deadline Tanda Tangan",font=("Times New Roman",12), bg="white")
-    label6.place(x=170,y=325)
+    label6.place(x=170,y=425)
 
     ent4 =tk.Entry(mainform6,width=35, font=("Times New Roman", 12))
     ent4.place(x=600,y=290)
-    label7=tk.Label(mainform6,text= "Deadline Tanda Tangan",font=("Times New Roman",12), bg="white")
-    label7.place(x=170,y=325)
+    label7=tk.Label(mainform6,text= "Nama Dosen Tujuan",font=("Times New Roman",12), bg="white")
+    label7.place(x=600,y=265)
+
     ent5 =tk.Entry(mainform6,width=35, font=("Times New Roman", 12))
     ent5.place(x=600,y=370)
+    label8=tk.Label(mainform6,text= "Nama File Pengajuan (Pdf)",font=("Times New Roman",12), bg="white")
+    label8.place(x=600,y=345)
+
     ent6 =tk.Entry(mainform6,width=35, font=("Times New Roman", 12))
     ent6.place(x=600,y=450)
+    label9=tk.Label(mainform6,text= "Keterangan",font=("Times New Roman",12), bg="white")
+    label9.place(x=600,y=425)
+
+    ent7 =tk.Entry(mainform6, font=("Times New Roman", 12))
+    ent7.place(x=350,y=510,width=400, height=30)
+    label10=tk.Label(mainform6,text= "Deskripsi Kegiatan",font=("Times New Roman",12), bg="white")
+    label10.place(x=350,y=485)
+
+    button1 = button1= tk.Button(mainform6,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12))
+    button1.config(width=10,height=1)
+    button1.place(x=870,y=560)
+    button1 = button1= tk.Button(mainform6,text="Kembali",bg="red",fg="white", font=("Times New Roman",12))
+    button1.config(width=10,height=1)
+    button1.place(x=120,y=560)
 
     mainform6.mainloop()
 
@@ -156,7 +173,7 @@ def tombol3():
     ent2 = tk.Entry(mainform3,width=20, font=("Times New Roman", 15), show="*" )
     ent2.place(x=450,y=350)
 
-    button1= tk.Button(mainform3,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12))
+    button1= tk.Button(mainform3,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12),command=lambda:{mainform3.destroy(),tombol6()})
     button1.config(width=10,height=1)
     button1.place(x=497,y=400)
     button2= tk.Button(mainform3,text="Kembali",bg="red",fg="white", font=("Times New Roman",12),command=lambda:{mainform3.destroy(),tombol2()})
@@ -164,9 +181,6 @@ def tombol3():
     button2.place(x=515,y=440)
 
     mainform3.mainloop()
-
-
-
 
     
 def tombol2():
