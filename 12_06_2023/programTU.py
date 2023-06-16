@@ -3,9 +3,9 @@ print ("pilih program selanjutnya")
 print ("1. Masuk sebagai Tata Usaha Teknik Industri")
 print ("2. SUB Bagian Kemahasiswaan dan Alumni")
 print ("3. keluar")
-pilihan = int(input("masukkan pilihan anda (1-3): "))
+pilihan = input("masukkan pilihan anda (1-3): ")
 
-if pilihan == 1:
+if pilihan == "1":
     import login_tuti
 
     print ("selamat datang di TUTI")
@@ -32,13 +32,14 @@ if pilihan == 1:
     else:
         print("angka yang anda masukkan tidak valid")
 
-elif pilihan == 2:
+elif pilihan == "2":
     import login_fakultas
     import fakultas
 
-elif pilihan == 3:
+elif pilihan == "3":
     print ("Terima Kasih")
 
 else:
     print("angka yang anda masukkan tidak valid")
+    
 
