@@ -17,4 +17,11 @@ def login():
     if attempts == 0:
         print("Anda telah melebihi batas percobaan. Akun terkunci.")
         quit()
+
+def submit1():
+    input_username = ent1.get()
+    input_password = ent2.get()
+
+def get_input(prompt):
+    return input(prompt)
 login()

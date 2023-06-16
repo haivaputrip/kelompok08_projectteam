@@ -19,13 +19,13 @@ def buka_file_excel():
         # Mengizinkan pengguna mengedit file
         while True:
             baris = input("Masukkan nomor baris yang ingin diedit (atau 'selesai' untuk keluar): ")
-            
             if baris.lower() == "selesai":
-                import programTU
+               
                 break
             
             kolom = "G"
             nilai_baru = input("Masukkan nilai baru: ")
+            
             
             # Mengubah nilai sel yang diinginkan
             sheet[kolom + baris] = nilai_baru
@@ -39,6 +39,7 @@ def buka_file_excel():
     
     except Exception as e:
         print(f"Terjadi kesalahan: {str(e)}")
-
+    
+    
 # Memanggil fungsi untuk membuka dan mengedit file Excel
 buka_file_excel()

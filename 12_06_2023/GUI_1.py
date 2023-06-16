@@ -1,6 +1,7 @@
+import openpyxl
 import tkinter as tk
 from PIL import ImageTk, Image
-
+from tkcalendar import DateEntry
 def tombol6():
     mainform6 = tk.Tk()
     mainform6.geometry("1080x720")
@@ -35,7 +36,7 @@ def tombol6():
     label5=tk.Label(mainform6,text= "Nama Kegiatan",font=("Times New Roman",12), bg="white")
     label5.place(x=170,y=345)
 
-    ent3 =tk.Entry(mainform6,width=35, font=("Times New Roman", 12))
+    ent3 =DateEntry(mainform6,width=35, font=("Times New Roman", 12))
     ent3.place(x=170,y=450)
     label6=tk.Label(mainform6,text= "Deadline Tanda Tangan",font=("Times New Roman",12), bg="white")
     label6.place(x=170,y=425)
@@ -60,16 +61,69 @@ def tombol6():
     label10=tk.Label(mainform6,text= "Deskripsi Kegiatan",font=("Times New Roman",12), bg="white")
     label10.place(x=350,y=485)
 
-    button1 = button1= tk.Button(mainform6,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12))
-    button1.config(width=10,height=1)
-    button1.place(x=870,y=560)
-    button1 = button1= tk.Button(mainform6,text="Kembali",bg="red",fg="white", font=("Times New Roman",12))
-    button1.config(width=10,height=1)
-    button1.place(x=120,y=560)
+    def submit():
+        nama_pemohon = ent1.get()
+        nama_kegiatan = ent2.get()
+        deadline = ent3.get()
+        tujuan = ent4.get()
+        file_proposal = ent5.get()
+        keterangan_pengajuan = ent6.get()
+        deskripsi_kegiatan = ent7.get()
+
+        # Memanggil fungsi untuk menyimpan data pengajuan tandatangan dalam spreadsheet
+        simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi_kegiatan, tujuan, file_proposal,
+                    keterangan_pengajuan)
+
+    button1 = tk.Button(mainform6, text="Masuk", bg="blue", fg="white", font=("Times New Roman", 12), command=submit)
+    button1.config(width=10, height=1)
+    button1.place(x=870, y=560)
+    button2 = tk.Button(mainform6, text="Kembali", bg="red", fg="white", font=("Times New Roman", 12),
+                        command=lambda: {mainform6.destroy(), tombol5()})
+    button2.config(width=10, height=1)
+    button2.place(x=120, y=560)
 
     mainform6.mainloop()
 
+# Fungsi untuk meminta input dari pengguna
+def get_input(prompt):
+    return input(prompt)
 
+# Fungsi untuk menyimpan data pengajuan tandatangan dalam spreadsheet
+def simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi, tujuan, file_proposal, keterangan_pengajuan):
+    wb = openpyxl.load_workbook('hasil_pengajuan_tandatangan.xlsx')
+    sheet = wb.active
+
+    # Mendapatkan jumlah baris yang sudah terisi
+    row_count = sheet.max_row
+
+    # Menyimpan data pengajuan tandatangan di baris berikutnya
+    row_data = [nama_pemohon, nama_kegiatan, deadline, deskripsi, tujuan, file_proposal, keterangan_pengajuan]
+    sheet.append(row_data)
+
+    # Menyimpan file spreadsheet
+    wb.save('hasil_pengajuan_tandatangan.xlsx')
+    print('Data pengajuan tandatangan telah disimpan dalam file hasil_pengajuan_tandatangan.xlsx')
+
+
+# Menampilkan data pengajuan tandatangan
+def tampilkan_data():
+    wb = openpyxl.load_workbook('hasil_pengajuan_tandatangan.xlsx')
+    sheet = wb.active
+
+    print("Data pengajuan tandatangan:")
+    for row in sheet.iter_rows(min_row=2, values_only=True):
+        print("Nama Pemohon:", row[0])
+        print("Nama Kegiatan:", row[1])
+        print("Deadline Tandatangan:", row[2])
+        print("Deskripsi Kegiatan:", row[3])
+        print("Tujuan Tanda Tangan:", row[4])
+        print("File Proposal Pengajuan:", row[5])
+        print("Keterangan Pengajuan:", row[6])
+        print("-----------------------------")
+
+    
+ 
+ 
 def tombol5():
     mainform5 = tk.Tk()
     mainform5.geometry("1080x720")
@@ -116,25 +170,37 @@ def tombol4():
     mainform4 = tk.Tk()
     mainform4.geometry("1080x720")
     mainform4.resizable(False,False)
-    label1 = tk.Label(mainform4,text="Selamat Datang",font=("Algerian",18))
-    label1.pack()
-    label2 = tk.Label(mainform4,text="Di",font=("Algerian",15))
-    label2.pack()
-    label3 = tk.Label(mainform4,text="Tata Usaha Teknik Industri",font=("Algerian",28))
-    label3.pack()
+    mainform4.configure(background="#395b7d")
 
-    button2 = tk.Button(mainform4,text="Masukkan Antrian Prodi",command= mainform4.destroy)
-    button2.pack()
-    button3 = tk.Button(mainform4,text="Konfirmasi Kaprodi")
-    button3.pack()
-    button4 = tk.Button(mainform4,text="Pengajuan Fakultas")
-    button4.pack()
-    Image1 = Image.open("logoft.PNG")
-    Image1 = Image1.resize((468,242),Image.ANTIALIAS)
-    photo = ImageTk.PhotoImage(Image1)
+    Image2 = Image.open("logoti2.PNG")
+    Image2 = Image2.resize((275,275),Image.ANTIALIAS)
+    photo1= ImageTk.PhotoImage(Image2)
+    gambar1=tk.Label(mainform4,image=photo1,background="#395b7d")
+    gambar1.place(x=210,y=-30)
+    gambar1.configure(highlightthickness=0, borderwidth=0,)
 
-    gambar=tk.Label(mainform4,image=photo)
-    gambar.pack()
+    label0= tk.Label(mainform4,text= "Teknik Industri",font=("Times New Roman",44),bg="#395b7d", fg= "white")
+    label0.place(x=435,y=40)
+    label1= tk.Label(mainform4,text= "Universitas Sebelas Maret",font=("Times New Roman",30),bg="#395b7d", fg= "white")
+    label1.place(x=435,y=110)
+
+    kotak1 =tk.Frame(mainform4,width=300, height=30, bg= 'grey')
+    kotak1.place(x=400,y=250)
+    label2 = tk.Label(mainform4,text= "Pilih Keperluan",font=("Times New Roman",12),bg="grey", fg= "white")
+    label2.place(x=500,y=252)
+    kotak2 = tk.Frame(mainform4,width=300, height=300, bg= 'white')
+    kotak2.place(x=400,y=280)
+
+    button2 = tk.Button(mainform4,text="Masukkan Antrian Prodi",command= lambda:{mainform4.destroy(),tombol6()})
+    button2.config(width=30, height=3)
+    button2.place(x=443,y=320)
+    button3 = tk.Button(mainform4,text="Konfirmasi Prodi")
+    button3.config(width=30, height=3)
+    button3.place(x=443,y=400)
+  
+    button5 = tk.Button(mainform4,text="Kembali", bg="red",fg="white")
+    button5.config(width=30, height=2)
+    button5.place(x=443,y=500)
 
     mainform4.mainloop()
 
@@ -173,7 +239,8 @@ def tombol3():
     ent2 = tk.Entry(mainform3,width=20, font=("Times New Roman", 15), show="*" )
     ent2.place(x=450,y=350)
 
-    button1= tk.Button(mainform3,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12),command=lambda:{mainform3.destroy(),tombol6()})
+
+    button1= tk.Button(mainform3,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12),command=lambda:{mainform3.destroy(),tombol4()})
     button1.config(width=10,height=1)
     button1.place(x=497,y=400)
     button2= tk.Button(mainform3,text="Kembali",bg="red",fg="white", font=("Times New Roman",12),command=lambda:{mainform3.destroy(),tombol2()})
@@ -182,6 +249,7 @@ def tombol3():
 
     mainform3.mainloop()
 
+    
     
 def tombol2():
     
