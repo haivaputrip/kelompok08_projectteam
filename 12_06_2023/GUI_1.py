@@ -61,26 +61,12 @@ def tombol6():
     label10=tk.Label(mainform6,text= "Deskripsi Kegiatan",font=("Times New Roman",12), bg="white")
     label10.place(x=350,y=485)
 
-    def submit():
-        nama_pemohon = ent1.get()
-        nama_kegiatan = ent2.get()
-        deadline = ent3.get()
-        tujuan = ent4.get()
-        file_proposal = ent5.get()
-        keterangan_pengajuan = ent6.get()
-        deskripsi_kegiatan = ent7.get()
-
-        # Memanggil fungsi untuk menyimpan data pengajuan tandatangan dalam spreadsheet
-        simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi_kegiatan, tujuan, file_proposal,
-                    keterangan_pengajuan)
-
-    button1 = tk.Button(mainform6, text="Masuk", bg="blue", fg="white", font=("Times New Roman", 12), command=submit)
-    button1.config(width=10, height=1)
-    button1.place(x=870, y=560)
-    button2 = tk.Button(mainform6, text="Kembali", bg="red", fg="white", font=("Times New Roman", 12),
-                        command=lambda: {mainform6.destroy(), tombol5()})
-    button2.config(width=10, height=1)
-    button2.place(x=120, y=560)
+    button1 = button1= tk.Button(mainform6,text="Masuk",bg="blue",fg="white", font=("Times New Roman",12))
+    button1.config(width=10,height=1)
+    button1.place(x=870,y=560)
+    button1 = button1= tk.Button(mainform6,text="Kembali",bg="red",fg="white", font=("Times New Roman",12))
+    button1.config(width=10,height=1)
+    button1.place(x=120,y=560)
 
     mainform6.mainloop()
 
@@ -105,21 +91,6 @@ def simpan_data(nama_pemohon, nama_kegiatan, deadline, deskripsi, tujuan, file_p
     print('Data pengajuan tandatangan telah disimpan dalam file hasil_pengajuan_tandatangan.xlsx')
 
 
-# Menampilkan data pengajuan tandatangan
-def tampilkan_data():
-    wb = openpyxl.load_workbook('hasil_pengajuan_tandatangan.xlsx')
-    sheet = wb.active
-
-    print("Data pengajuan tandatangan:")
-    for row in sheet.iter_rows(min_row=2, values_only=True):
-        print("Nama Pemohon:", row[0])
-        print("Nama Kegiatan:", row[1])
-        print("Deadline Tandatangan:", row[2])
-        print("Deskripsi Kegiatan:", row[3])
-        print("Tujuan Tanda Tangan:", row[4])
-        print("File Proposal Pengajuan:", row[5])
-        print("Keterangan Pengajuan:", row[6])
-        print("-----------------------------")
 
     
  
@@ -248,7 +219,6 @@ def tombol3():
     button2.place(x=515,y=440)
 
     mainform3.mainloop()
-
     
     
 def tombol2():
