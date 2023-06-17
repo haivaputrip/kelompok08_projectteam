@@ -30,6 +30,7 @@ def tombol8():
     mainform8 = tk.Tk()
     mainform8.geometry("1080x720")
     mainform8.resizable(False,False)
+    mainform8.title("Konfirmasi Fakultas")
 
     Image1 = Image.open("logoft.PNG")
     Image1 = Image1.resize((434,200),Image.ANTIALIAS)
@@ -141,6 +142,7 @@ def tombol7():
     mainform7.geometry("1080x720")
     mainform7.resizable(False,False)
     mainform7.configure(background="#395b7d")
+    mainform7.title("Konfirmasi Program Studi")
 
     Image2 = Image.open("logoti2.PNG")
     Image2 = Image2.resize((275,275),Image.ANTIALIAS)
@@ -265,6 +267,7 @@ def tombol6():
     mainform6.geometry("1080x720")
     mainform6.resizable(False,False)
     mainform6.configure(background="#395b7d")
+    mainform6.title("Input Antrean")
 
     Image2 = Image.open("logoti2.PNG")
     Image2 = Image2.resize((275,275),Image.ANTIALIAS)
@@ -375,6 +378,7 @@ def tombol5():
         mainform5 = tk.Tk()
         mainform5.geometry("1080x720")
         mainform5.resizable(False,False)
+        mainform5.title("Login Fakultas")
     
 
         Image1 = Image.open("logoft.PNG")
@@ -418,6 +422,7 @@ def tombol4():
     mainform4.geometry("1080x720")
     mainform4.resizable(False,False)
     mainform4.configure(background="#395b7d")
+    mainform4.title("Administrasi Program Studi")
 
     Image2 = Image.open("logoti2.PNG")
     Image2 = Image2.resize((275,275),Image.ANTIALIAS)
@@ -478,6 +483,7 @@ def tombol3():
         mainform3.geometry("1080x720")
         mainform3.resizable(False,False)
         mainform3.configure(background="#395b7d")
+        mainform3.title("Login Program Studi")
 
         Image2 = Image.open("logoti2.PNG")
         Image2 = Image2.resize((275,275),Image.ANTIALIAS)
@@ -525,6 +531,7 @@ def tombol2():
     mainform2 = tk.Tk()
     mainform2.geometry("1080x720")
     mainform2.resizable(False,False)
+    mainform2.title("T U T I")
     
     Image1 = Image.open("FT1.JPG")
     Image1 = Image1.resize((1080,720),Image.ANTIALIAS)
@@ -536,8 +543,8 @@ def tombol2():
     label1.place(x=460,y=120)
     label2 = tk.Label(mainform2,text="Di",font=("Algerian",15))
     label2.place(x=555,y=160)
-    label3 = tk.Label(mainform2,text="Tata Usaha Teknik Industri",font=("Algerian",28))
-    label3.place(x=300,y=200)
+    label3 = tk.Label(mainform2,text="ADMINISTRASI FAKULTAS TEKNIK",font=("Algerian",28))
+    label3.place(x=270,y=200)
 
     button2 = tk.Button(mainform2,text="Pihak Program Studi",command= lambda:{mainform2.destroy(), tombol3()})
     button2.config(width=30,height=1)
@@ -555,6 +562,7 @@ def tombol2():
 mainform1 = tk.Tk()
 mainform1.geometry("1080x720")
 mainform1.resizable(False,False)
+mainform1.title("T U T I")
 
 Image1 = Image.open("FT1.JPG")
 Image1 = Image1.resize((1080,720),Image.ANTIALIAS)
