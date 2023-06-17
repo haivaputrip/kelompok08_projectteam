@@ -93,8 +93,11 @@ def tombol8():
             # Mengizinkan pengguna mengedit file
 
             baris = baris_var.get() # Mengambil nilai dari objek StringVar
-            barisbaru = int(baris) + 1  
-            
+            try:
+                barisbaru = int(baris) + 1  
+            except ValueError:
+                messagebox.showerror("Error", "Input baris harus berupa angka!")
+                return
             kolom = "H"
             nilai_baru = nilai_baru_var.get()
                 
@@ -104,6 +107,8 @@ def tombol8():
             # Menyimpan perubahan ke file
             workbook.save(nama_file)
             print("Perubahan telah disimpan.")
+            excel_to_csv(nama_file_excel, nama_file_csv)
+            notifkonfirm1()
         except FileNotFoundError:
             print("File tidak ditemukan.")
         
@@ -120,7 +125,7 @@ def tombol8():
     ent2 = tk.Entry(mainform8, width=28, font=("Times New Roman", 14), textvariable=nilai_baru_var)  # Menghubungkan objek StringVar dengan Entry
     ent2.place(x=420, y=370, height=35)
     
-    button1 = tk.Button(mainform8, text="Submit", bg="blue", fg="white", font=("Times New Roman", 12), command=lambda:{buka_file_excel(),excel_to_csv(nama_file_excel, nama_file_csv),notifkonfirm1()})
+    button1 = tk.Button(mainform8, text="Submit", bg="blue", fg="white", font=("Times New Roman", 12), command=lambda:{buka_file_excel(),excel_to_csv(nama_file_excel, nama_file_csv)})
     button1.config(width=10, height=1)
     button1.place(x=575, y=480)
     button2 = tk.Button(mainform8, text="Kembali", bg="red", fg="white", font=("Times New Roman", 12), command=lambda:{mainform8.destroy(),tombol2()})
@@ -198,10 +203,11 @@ def tombol7():
             # Mengizinkan pengguna mengedit file
 
             baris = baris_var.get() # Mengambil nilai dari objek StringVar
-            barisbaru = int(baris) + 1
-
-            # if int(baris) == 0:
-            #     quit()    
+            try:
+                barisbaru = int(baris) + 1  
+            except ValueError:
+                messagebox.showerror("Error", "Input baris harus berupa angka!")
+                return
             
             kolom = "G"
             nilai_baru = nilai_baru_var.get()
@@ -212,11 +218,15 @@ def tombol7():
             # Menyimpan perubahan ke file
             workbook.save(nama_file)
             print("Perubahan telah disimpan.")
+            excel_to_csv(nama_file_excel, nama_file_csv)
+            notifkonfirm()
+
         except FileNotFoundError:
             print("File tidak ditemukan.")
         
         except Exception as e:
             print(f"Terjadi kesalahan: {str(e)}")
+    
     def notifkonfirm():
         messagebox.showinfo("Confirm", "Data Berhasil Diubah!")
         mainform7.destroy()
@@ -227,7 +237,7 @@ def tombol7():
     ent2 = tk.Entry(mainform7, width=28, font=("Times New Roman", 14), textvariable=nilai_baru_var)  # Menghubungkan objek StringVar dengan Entry
     ent2.place(x=420, y=370, height=35)
     
-    button1 = tk.Button(mainform7, text="Submit", bg="blue", fg="white", font=("Times New Roman", 12), command=lambda:{buka_file_excel(),excel_to_csv(nama_file_excel, nama_file_csv),notifkonfirm()})
+    button1 = tk.Button(mainform7, text="Submit", bg="blue", fg="white", font=("Times New Roman", 12), command=lambda:{buka_file_excel(),excel_to_csv(nama_file_excel, nama_file_csv)})
     button1.config(width=10, height=1)
     button1.place(x=575, y=480)
     button2 = tk.Button(mainform7, text="Kembali", bg="red", fg="white", font=("Times New Roman", 12),command=lambda:{mainform7.destroy(),tombol4()})
@@ -535,7 +545,7 @@ def tombol2():
     button3 = tk.Button(mainform2,text="Pihak Fakultas", command= lambda:{mainform2.destroy(),tombol5()})
     button3.config(width=20,height=1)
     button3.place(x=500,y=290)
-    button4 = tk.Button(mainform2,text="Lihat Antrean",background="blue",fg="white", command= lambda:{mainform2.destroy(),tampilkan_data()})
+    button4 = tk.Button(mainform2,text="Lihat Antrean",background="blue",fg="white", command= lambda:{tampilkan_data()})
     button4.config(width=20,height=2)
     button4.place(x=500,y=390)
 
